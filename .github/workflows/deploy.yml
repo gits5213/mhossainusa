@@ -35,14 +35,14 @@ jobs:
         id: check_cname
         run: |
           if [ -f "public/CNAME" ]; then
-            echo "has_cname=true" >> $GITHUB_OUTPUT
+            echo "base_path=" >> $GITHUB_OUTPUT
           else
-            echo "has_cname=false" >> $GITHUB_OUTPUT
+            echo "base_path=/mhossainusa" >> $GITHUB_OUTPUT
           fi
 
       - name: Build
         env:
-          BASE_PATH: ${{ steps.check_cname.outputs.has_cname == 'true' && '' || '/mhossainusa' }}
+          BASE_PATH: ${{ steps.check_cname.outputs.base_path }}
         run: npm run build
 
       - name: Setup Pages
