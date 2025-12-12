@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { getImagePath } from "@/lib/utils/image";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -23,7 +24,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/mosarraf.png"
+              src={getImagePath("/mosarraf.png")}
               alt="MD MOSARRAF HOSSAIN Logo"
               width={40}
               height={40}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { personalInfo } from "@/lib/data/personal";
 import Link from "next/link";
+import { getImagePath } from "@/lib/utils/image";
 
 export default function Hero() {
   return (
@@ -65,7 +66,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <Image
-                src="/mosarraf.png"
+                src={getImagePath("/mosarraf.png")}
                 alt="MD MOSARRAF HOSSAIN"
                 fill
                 className="rounded-full object-cover shadow-2xl border-4 border-white"

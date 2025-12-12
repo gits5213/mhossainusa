@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   ...(isProduction && { output: "export" }),
   // Set basePath for GitHub Pages subdirectory
   ...(basePath && { basePath }),
+  // Set assetPrefix to match basePath for correct asset loading
+  ...(basePath && { assetPrefix: basePath }),
   images: {
     // Only unoptimize for static export (production)
     unoptimized: isProduction,
@@ -17,6 +19,10 @@ const nextConfig: NextConfig = {
   },
   // Only add trailing slash for production builds
   ...(isProduction && { trailingSlash: true }),
+  // Expose basePath to client-side code
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;
