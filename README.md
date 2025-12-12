@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MD MOSARRAF HOSSAIN - Portfolio Website
+
+A modern, responsive portfolio website showcasing professional experience, skills, and achievements in Software Quality Assurance and Testing.
+
+## Features
+
+- **Modern Design**: Clean, professional design built with Next.js 16 and Tailwind CSS
+- **Responsive Layout**: Fully responsive design that works on all devices
+- **Professional Sections**:
+  - Hero section with contact information
+  - About/Objective section
+  - Detailed experience timeline
+  - Comprehensive skills showcase
+  - Certifications (with LinkedIn integration placeholder)
+  - Contact form
+  - Legal pages (Privacy Policy, Terms of Service)
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Icons**: Lucide React
+- **Fonts**: Geist Sans & Geist Mono
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd mhossainusa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+mhossainusa/
+├── app/                    # Next.js app directory
+│   ├── about/             # About page
+│   ├── certifications/    # Certifications page
+│   ├── contact/          # Contact page
+│   ├── experience/       # Experience page
+│   ├── privacy/          # Privacy Policy page
+│   ├── skills/           # Skills page
+│   ├── terms/            # Terms of Service page
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx         # Home page
+│   └── globals.css      # Global styles
+├── components/           # React components
+│   ├── ContactForm.tsx
+│   ├── ExperienceTimeline.tsx
+│   ├── Footer.tsx
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
+│   └── SkillsGrid.tsx
+├── lib/                  # Utilities and data
+│   ├── data/            # Data files
+│   │   ├── certifications.ts
+│   │   ├── education.ts
+│   │   ├── experience.ts
+│   │   ├── personal.ts
+│   │   └── skills.ts
+│   └── utils/           # Utility functions
+│       └── linkedin.ts # LinkedIn integration utilities
+└── public/              # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## LinkedIn Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The website includes a placeholder for LinkedIn data fetching. To implement:
 
-## Deploy on Vercel
+1. Create an API route at `app/api/linkedin/route.ts`
+2. Use a LinkedIn scraper service (e.g., RapidAPI) or LinkedIn Official API
+3. Update `lib/utils/linkedin.ts` with your implementation
+4. Update `lib/data/certifications.ts` to fetch from the API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Note**: LinkedIn's official API requires OAuth authentication. For portfolio sites, consider:
+- Using a backend proxy service
+- Manual updates
+- Third-party LinkedIn scraping services
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+### GitHub Pages with Custom Domain (Configured)
+
+This project is configured for GitHub Pages deployment with custom domain support.
+
+**Quick Setup:**
+
+1. **Enable GitHub Pages:**
+   - Go to repository **Settings** > **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - Save settings
+
+2. **Add Custom Domain (Optional):**
+   - Create `public/CNAME` file with your domain:
+     ```
+     www.yourdomain.com
+     ```
+   - Or configure in GitHub Settings > Pages > Custom domain
+   - Configure DNS records (see `GITHUB_PAGES_SETUP.md` for details)
+
+3. **Deploy:**
+   ```bash
+   git push origin main
+   ```
+   The GitHub Action will automatically build and deploy.
+
+**For detailed instructions, see:** `GITHUB_PAGES_SETUP.md`
+
+### Vercel (Alternative)
+
+1. Push your code to GitHub
+2. Import your repository in [Vercel](https://vercel.com)
+3. Deploy with default settings
+
+### Other Platforms
+
+The site can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Customization
+
+### Update Personal Information
+
+Edit `lib/data/personal.ts` to update:
+- Name, title, contact information
+- LinkedIn profile URL
+- Location and work status
+
+### Update Experience
+
+Edit `lib/data/experience.ts` to add or modify work experience entries.
+
+### Update Skills
+
+Edit `lib/data/skills.ts` to modify skill categories and items.
+
+### Styling
+
+The site uses Tailwind CSS. Customize colors and styles in:
+- `app/globals.css` for global styles
+- Component files for component-specific styles
+- Tailwind config (if needed)
+
+## License
+
+This project is private and proprietary.
+
+## Contact
+
+MD MOSARRAF HOSSAIN
+- Email: mdmosarrafhossain1@gmail.com
+- Phone: (646) 250-2783
+- LinkedIn: [https://www.linkedin.com/in/md-hossain-4b04bab3/](https://www.linkedin.com/in/md-hossain-4b04bab3/)

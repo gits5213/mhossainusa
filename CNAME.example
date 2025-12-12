@@ -1,0 +1,19 @@
+# Copy this file to CNAME and replace with your custom domain
+# Example: www.yourdomain.com or yourdomain.com
+# 
+# Instructions:
+# 1. Copy this file: cp CNAME.example CNAME
+# 2. Edit CNAME and add your custom domain (one domain per line)
+# 3. Commit and push CNAME to your repository
+# 4. Configure DNS settings for your domain:
+#    - Add a CNAME record pointing to: yourusername.github.io
+#    - Or add an A record pointing to GitHub Pages IPs:
+#      185.199.108.153
+#      185.199.109.153
+#      185.199.110.153
+#      185.199.111.153
+# 5. Enable custom domain in GitHub repository settings:
+#    Settings > Pages > Custom domain
+
+yourdomain.com
+
