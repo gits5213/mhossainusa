@@ -31,19 +31,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check for custom domain
-        id: check_cname
+      - name: Determine base path
+        id: base_path
         run: |
-          if [ -f "public/CNAME" ]; then
+          # Check GitHub secret first, then CNAME file, then default to repository name
+          if [ "${{ secrets.USE_CUSTOM_DOMAIN }}" == "true" ] || [ -f "public/CNAME" ]; then
             echo "base_path=" >> $GITHUB_OUTPUT
+            echo "Using custom domain - no basePath needed"
           else
             echo "base_path=/mhossainusa" >> $GITHUB_OUTPUT
+            echo "Using GitHub Pages subdirectory: /mhossainusa"
           fi
 
       - name: Build
         env:
-          BASE_PATH: ${{ steps.check_cname.outputs.base_path }}
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.check_cname.outputs.base_path }}
+          BASE_PATH: ${{ steps.base_path.outputs.base_path }}
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.base_path.outputs.base_path }}
         run: npm run build
 
       - name: Setup Pages

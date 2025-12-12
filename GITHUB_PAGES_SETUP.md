@@ -19,9 +19,20 @@ This guide will help you deploy your Next.js portfolio to GitHub Pages with a cu
 
 ### Step 2: Configure Custom Domain (Optional)
 
-#### Option A: Using CNAME file
+#### Option A: Using GitHub Secret (Recommended)
 
-1. Create a file named `CNAME` in the `public` folder (or root of `out` folder after build)
+1. Go to your repository on GitHub
+2. Navigate to **Settings** > **Secrets and variables** > **Actions**
+3. Click **New repository secret**
+4. Name: `USE_CUSTOM_DOMAIN`
+5. Value: `true`
+6. Click **Add secret**
+
+This will tell the workflow to use an empty basePath (for custom domain) instead of `/mhossainusa`.
+
+#### Option B: Using CNAME file
+
+1. Create a file named `CNAME` in the `public` folder
 2. Add your domain name (one per line):
    ```
    www.yourdomain.com
@@ -38,11 +49,16 @@ This guide will help you deploy your Next.js portfolio to GitHub Pages with a cu
    git push
    ```
 
-#### Option B: Configure in GitHub Settings
+#### Option C: Configure in GitHub Settings
 
 1. Go to **Settings** > **Pages**
 2. Under **Custom domain**, enter your domain
 3. Check **Enforce HTTPS** (recommended)
+
+**Note**: The workflow checks in this order:
+1. GitHub Secret `USE_CUSTOM_DOMAIN` (if set to "true")
+2. CNAME file existence
+3. Default to `/mhossainusa` basePath
 
 ### Step 3: Configure DNS
 
